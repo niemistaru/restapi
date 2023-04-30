@@ -23,13 +23,19 @@ const client = mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology
 
 
 /*****************REITIT***********************/
+//29.4.KOKEILEN JOS TÄLLÄ SAIS TÄN TUPUTETTUA SINNE - saa mut tyylit ei tuu reittiin? tiedoston kautta kyllä näkyy
+//Serve a fom to the user
+app.get('/', function(req, res) {
+    res.sendFile(__dirname + '/index.html');
+});
 
 /*****************Return all documents in collection*********************/
 //GET http://myapp.com/api/getall
 app.get("/api/getall", function(req, res) {
+  //jätetään toistaiseksi pois tää...
+//  res.sendFile(__dirname + '/index.html');
     async function connect() {
         try {
-          //tässä koklaan, aaltosulkeet oli siis tyhjät!
             const movies = await Movie.find({directors: 'Robert Rodriguez'});
             console.log("All the movies loaded");
             res.status(200).json(movies);
@@ -67,16 +73,30 @@ connect();
 /*********************Create a new document in the collection******************/
 //POST http://myapp.com/api/add
   app.post("/api/add", function(req, res) {
-    res.send("Add a movie: " + req.body.title + " (" + req.body.year + ")");
+    var newMovie = new Movie({
+      _id: new mongoose.Types.ObjectId(),
+      title: req.body.title,
+      year: req.body.year,
+      directors: "Robert Rodriguez" 
+    });
+
+     newMovie.save().then(() => {
+       res.send("Adding a new movie: " +req.body.title + "(" + req.body.year +")");
+     }).catch((err) => {
+       console.log(err);
+     })
+  
+    console.log("Added a new movie: " + req.body.title);
   });
   
-  //Update the document with the given id
+  /**********************Update the document with the given id **************************/
   //PUT/PATCH http://myapp.com/api/update/:id
   app.put("/api/update/:id", function(req, res) {
     res.send("Update a movie with the given id: " + req.params.id);
   });
   
   //Delete the item with the given id.  Huomaa ID-arvon lukeminen 
+  // tää o yks hypnoticeista: 644e2e4203840712283c7602
   //DELETE http://myapp.com/api/delete/:id
   app.delete("/api/delete/:id", function(req, res) {
     res.send("Delete a movie item with the given id: " + req.params.id);

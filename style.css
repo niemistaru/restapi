@@ -1,0 +1,66 @@
+
+
+  main {
+    background-color: #C688CB;
+    color: #011638;
+    width: 75%;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'BioRhyme', serif;
+    text-align: left;
+  }
+  p, label, span, a {
+    font-family: 'Space Mono', monospace;
+  }
+ 
+  li {
+    margin-bottom: 12px;
+    text-align: left;
+    font-family: 'Space Mono', monospace;
+  }
+  
+  a {
+    color: #b8c5d6;
+  }
+  a:hover {
+    color: #ffffff;
+  }
+
+
+.paaotsikko {
+    margin-top: 30px;
+    margin-bottom: 45px;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  
+  
+  
+    @media only screen and (max-width: 600px) {
+        main, .sivupalkki {width: 100%;}
+    }
+  
+
+  
+ 
+/********************** NEW MESSAGE**************************/
+#newM {
+    font-family: 'BioRhyme', serif;
+    text-align: center;
+    margin-top: 30px;  
+}
+.form {
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    min-width: 350px;
+
+}
+.title1 {
+    margin-left: 30px;
+
+}
+
+

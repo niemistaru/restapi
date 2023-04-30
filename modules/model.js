@@ -5,10 +5,11 @@ var mongoose = require("mongoose");
 
 // Määritellään Schema, eli tietomalli.
 const MovieSchema = new mongoose.Schema({
-    id: String,
+     _id: String,
     title: String,
     year: Number,
     poster: String,
+    directors: String
 });
 
 /* The next step is to export MovieSchema based Movie Model */
