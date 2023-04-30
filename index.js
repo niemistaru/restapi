@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({extended: true }));
 //Yhteys tietokantaan
 const client = mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-import './style.css'
+//import './style.css'
 
 /*****************REITIT***********************/
 //Serve a fom to the user
