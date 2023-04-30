@@ -1,11 +1,17 @@
 
-
-  main {
+ body {
+    background-color: #BD4E66;
+ }
+ img {
+    vertical-align: middle;
+    margin-top: 50px;
+    border-radius: 10px;
+ }
+ main {
     background-color: #C688CB;
     color: #011638;
-    width: 75%;
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1 {
     font-family: 'BioRhyme', serif;
     text-align: left;
   }
@@ -13,12 +19,6 @@
     font-family: 'Space Mono', monospace;
   }
  
-  li {
-    margin-bottom: 12px;
-    text-align: left;
-    font-family: 'Space Mono', monospace;
-  }
-  
   a {
     color: #b8c5d6;
   }
@@ -35,17 +35,8 @@
     padding-right: 10px;
   }
   
-  
-  
-  
-    @media only screen and (max-width: 600px) {
-        main, .sivupalkki {width: 100%;}
-    }
-  
 
   
- 
-/********************** NEW MESSAGE**************************/
 #newM {
     font-family: 'BioRhyme', serif;
     text-align: center;
@@ -60,7 +51,12 @@
 }
 .title1 {
     margin-left: 30px;
+    max-width: 100px;
 
 }
 
+.btn.btn-info {
+    max-width: 30%;
+    align-items: center;
+}
 
