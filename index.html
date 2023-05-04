@@ -18,9 +18,9 @@
     <div class="form">
       <h1 class="paaotsikko" id="newM">Rodriguez Kingdom</h1>
       <p>Search movie or update</p>
-            <form method="post" >
+            <form method="get" >
                 <div>
-                    <button id="getall" class="btn btn-info"action="/api/getall">Get all movies</button>
+                    <button id="getall" class="btn btn-info">Get all movies</button>
                     <label for="title">Movie title</label>
                     <input type="title" class="title1" id="movieTitle">
                     <label for="year">Year</label>
@@ -28,7 +28,7 @@
                     <button type="submit" class="btn btn-info" id="addMovie" action="/api/add">Add</button> 
 
                 </div>
-                <div id="results">
+                
                    
               </form>
     </div>
@@ -36,17 +36,14 @@
     <!--<img src="Rodriguez.jpg" alt="Robert Rodriguez in New York Comic con 2018." width="300px">
     -->
     <script>
+         //Kokeilen nappijuttua:
+    var btn = document.getElementById("getall");
+    btn.onclick = function() {
+    location.assign('https://rodriguez.ondender.com/api/getall');
+  
 
-    
-//Event listener to input (select movie theatre)
-        var button = document.getElementById("getall");     
-         button.addEventListener("click", () => {
-            showResults();
-});
-function showResults() {
-    const movies = Movie.find({directors: 'Robert Rodriguez'});
-    document.getElementById("results").innerHTML = movies;
 }
+
     
 
     </script>

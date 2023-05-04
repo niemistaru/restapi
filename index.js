@@ -24,13 +24,12 @@ const client = mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology
 //import './style.css'
 
 /*****************REITIT***********************/
-//Serve a fom to the user
+//Serve a form to the user
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
 /*****************Return all documents in collection*********************/
-//GET http://myapp.com/api/getall
 app.get('/api/getall', function(req, res) {
   //jätetään toistaiseksi pois tää...
 //  res.sendFile(__dirname + '/index.html');
@@ -49,10 +48,10 @@ app.get('/api/getall', function(req, res) {
     connect();
   });
 
+ 
 /*******************Return one item with the given id**************/
-//GET http://myapp.com/api/:id
-//Tässä on esimerkki-id: 573a13bef29313caabd5cd19
-//TÄLLÄ TÄÄ PALAUTTAA SENTÄÄN TYHJÄN VEKTORIN
+//Esimerkki-id: 573a13bef29313caabd5cd19
+//Tällä palauttaa sentään tyhjän vektorin...
   app.get("/api/:id", function (req, res) {
    var id = req.params.id;
    async function getId() {
@@ -69,19 +68,6 @@ app.get('/api/getall', function(req, res) {
   }
   getId();
  });
-
-
- //SHOCKING, mutta tämä ei toimi
-// app.get("api/:id", async (req, res) => {
-//      var id = req.params.id;
-//      await Movie.findById(id).then((err, result) => {
-//      console.log(result);
-//      if (err) {
-//          res.send(err);
-//       }
-//        res.send(result);
-//    })
-//   });
 
  
 /*********************Create a new document in the collection******************/
@@ -138,14 +124,13 @@ app.get('/api/getall', function(req, res) {
   // });
   
 
-  //Delete the item with the given id.  Huomaa ID-arvon lukeminen 
+  /********************Delete the item with the given id ********/
   // tää o yks hypnoticeista: 644e2d69eb3548598e676263
-  //DELETE http://myapp.com/api/delete/:id
   app.delete("/api/delete/:id", function(req, res) {
     res.send("Delete a movie item with the given id: " + req.params.id);
   });
   
-  // Web-palvelimen luonti Expressin avulla
+/************* * Web-palvelimen luonti Expressin avulla ******************/
   app.listen(PORT, function() {
     console.log("Kuunnellaan porttia " + PORT);
   });  
