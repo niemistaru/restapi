@@ -5,7 +5,6 @@ var mongoose = require("mongoose");
 
 // Määritellään Schema, eli tietomalli.
 const MovieSchema = new mongoose.Schema({
-     _id: String,
     title: String,
     year: Number,
     poster: String,

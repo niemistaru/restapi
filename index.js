@@ -51,7 +51,6 @@ app.get('/api/getall', function(req, res) {
  
 /*******************Return one item with the given id**************/
 //Esimerkki-id: 573a13bef29313caabd5cd19
-//Tällä palauttaa sentään tyhjän vektorin...
   app.get("/api/:id", function (req, res) {
    var id = req.params.id;
    async function getId() {
@@ -74,7 +73,6 @@ app.get('/api/getall', function(req, res) {
 //POST http://myapp.com/api/add
   app.post("/api/add", function(req, res) {
     var newMovie = new Movie({
-      _id: new mongoose.Types.ObjectId(),
       title: req.body.title,
       year: req.body.year,
       directors: "Robert Rodriguez" 
@@ -90,9 +88,12 @@ app.get('/api/getall', function(req, res) {
   });
   
   /**********************Update the document with the given id **************************/
-  //PUT/PATCH http://myapp.com/api/update/:id
+  //PUT/PATCH http://myapp.com/api/update/:id¨
+  //18.5. TÄÄ EI TOIMI VIELÄKÄÄN 
   app.put("/api/update/:id", function(req, res) {
-      var query = { _id: req.body.id };
+      //poistin alaviivan id:stä. kokeilen bodyn tilalle tota paramsia
+      var query = { id: req.params.id };
+//      var query = { id: req.body.id };
       var newdata = { title: req.body.title, year: req.body.year };
       var options = { new: true };
 //Ajetaan funktio
