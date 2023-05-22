@@ -23,5 +23,8 @@
     "express": "^4.18.2",
     "mongodb": "^5.3.0",
     "mongoose": "^7.0.5"
-  }
+  }, 
+  "client": "npm start --prefix client",
+  "clientinstall": "npm install --prefix client",
+  "dev": "concurrently \"npm run server\" \"npm run client" 
 }

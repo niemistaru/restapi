@@ -1,6 +1,13 @@
 //Express-moduuli käyttöön
 var express = require("express");
 var app = express();
+const cors = require('cors');
+
+//kokeillaan tämmöstäkin
+app.use('/api/user', (req, res, next)=>{
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  next();
+})
 
 //Ympäristömuuttujat
 require("dotenv").config();
@@ -13,6 +20,7 @@ const Movie = require("./modules/model.js");
 //Tietokanta ja portti
 var uri = process.env.DB_URI;
 const PORT = process.env.PORT || 5000;
+app.use(cors());
 
 //Lomakedatan lukemiseen
 var bodyParser = require("body-parser");
@@ -91,23 +99,41 @@ app.get('/api/getall', function(req, res) {
   //PUT/PATCH http://myapp.com/api/update/:id¨
   //18.5. TÄÄ EI TOIMI VIELÄKÄÄN 
   app.put("/api/update/:id", function(req, res) {
-      //poistin alaviivan id:stä. kokeilen bodyn tilalle tota paramsia
-      var query = { id: req.params.id };
-//      var query = { id: req.body.id };
-      var newdata = { title: req.body.title, year: req.body.year };
-      var options = { new: true };
-//Ajetaan funktio
-      Movie.findOneAndUpdate(
-        query,
-        newdata,
-        options).then(() => {
-          res.send("Updated the movie with id " + req.params.id);
-        }).catch((err) => {
-          console.log(err);
-        })
-        
-        console.log("Update completed.")
-        });
+//TÄÄ OLI KEVÄÄN 2022 VIDEOLTA MUT HERJAA ETTÄ ERR EI MÄÄRITELTY, KU EN SAANU TÄHÄN SITÄ THEN-TOIMIMAAN
+    // var id = req.params.id;
+    // Movie.findByIdAndUpdate(id, {title: req.body.title, year: req.body.year}, {new: true})
+
+    //   if (err) {
+    //     res.status(500).json("System error");
+    //   }
+    //   else {
+    //     res.status(200).json(results)
+    //   }
+    // });
+  //   then(() => {
+  //     res.send("Updated Rodriguez movie with id " + req.params.id);
+  //   })catch((err) => {
+  //     console.log(err);
+  //   })
+  //   console.log("Movie " + req.params.id + " updated")
+  // });
+
+  //20.5.TÄÄ OLI SE JONKA PALAUTIT paitsi poistin querystää kaarisulkeet koska hei
+       var query = req.params.id;
+       var newdata = { title: req.body.title, year: req.body.year };
+       var options = { new: true };
+ //Ajetaan funktio
+       Movie.findOneAndUpdate(
+         query,
+         newdata,
+         options).then(() => {
+           res.send("Updated the movie with id " + req.params.id);
+         }).catch((err) => {
+           console.log(err);
+         })
+       
+         console.log("Update completed.")
+         });
 
 
   // app.put("/api/update/:id", function(req, res) {
