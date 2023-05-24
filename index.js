@@ -29,7 +29,6 @@ app.use(bodyParser.urlencoded({extended: true }));
 //Yhteys tietokantaan
 const client = mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-//import './style.css'
 
 /*****************REITIT***********************/
 //Serve a form to the user
@@ -39,8 +38,7 @@ app.get('/', function(req, res) {
 
 /*****************Return all documents in collection*********************/
 app.get('/api/getall', function(req, res) {
-  //jätetään toistaiseksi pois tää...
-//  res.sendFile(__dirname + '/index.html');
+  
     async function connect() {
         try {
             const movies = await Movie.find({directors: 'Robert Rodriguez'});
@@ -97,28 +95,7 @@ app.get('/api/getall', function(req, res) {
   
   /**********************Update the document with the given id **************************/
   //PUT/PATCH http://myapp.com/api/update/:id¨
-  //18.5. TÄÄ EI TOIMI VIELÄKÄÄN 
   app.put("/api/update/:id", function(req, res) {
-//TÄÄ OLI KEVÄÄN 2022 VIDEOLTA MUT HERJAA ETTÄ ERR EI MÄÄRITELTY, KU EN SAANU TÄHÄN SITÄ THEN-TOIMIMAAN
-    // var id = req.params.id;
-    // Movie.findByIdAndUpdate(id, {title: req.body.title, year: req.body.year}, {new: true})
-
-    //   if (err) {
-    //     res.status(500).json("System error");
-    //   }
-    //   else {
-    //     res.status(200).json(results)
-    //   }
-    // });
-  //   then(() => {
-  //     res.send("Updated Rodriguez movie with id " + req.params.id);
-  //   })catch((err) => {
-  //     console.log(err);
-  //   })
-  //   console.log("Movie " + req.params.id + " updated")
-  // });
-
-  //20.5.TÄÄ OLI SE JONKA PALAUTIT paitsi poistin querystää kaarisulkeet koska hei
        var query = req.params.id;
        var newdata = { title: req.body.title, year: req.body.year };
        var options = { new: true };
@@ -136,6 +113,7 @@ app.get('/api/getall', function(req, res) {
          });
 
 
+         //Vanha yritelmä:
   // app.put("/api/update/:id", function(req, res) {
   //     Movie.find({directors: 'Robert Rodriguez'});
   //     const filter = { _id: req.body.id};
@@ -152,7 +130,7 @@ app.get('/api/getall', function(req, res) {
   
 
   /********************Delete the item with the given id ********/
-  // tää o yks hypnoticeista: 644e2d69eb3548598e676263
+  //Testailuun, tää on yks hypnoticeista: 644e2d69eb3548598e676263
   app.delete("/api/delete/:id", function(req, res) {
     res.send("Delete a movie item with the given id: " + req.params.id);
   });
